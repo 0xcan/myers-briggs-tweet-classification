@@ -1,4 +1,9 @@
 import pickle
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+import contractions
+import re
+from nltk.tokenize import word_tokenize
 
 try:
     with open("saved-models/SVM_E-I.sav", "rb") as file:
