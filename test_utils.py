@@ -13,7 +13,7 @@ except FileNotFoundError:
     print("Model not found!")
 
 try:
-    with open("vectorizer.pkl", "rb") as file:
+    with open("vectorizer/vectorizer.pkl", "rb") as file:
         vectorizer = pickle.load(file)
 except FileNotFoundError:
     print("Tokenizer not found!")
