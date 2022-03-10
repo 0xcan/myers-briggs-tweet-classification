@@ -37,9 +37,8 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-
 <h1>Myers-Briggs Personality Type Classification</h1>
-<img src="../images/personalities.png" alt="Personalities">
+<img src="{{url_for('static', filename='personalities.png')}}">
 <p>Enter the username of Twitter user</p>
 <form style="margin: auto; width: 220px;">
     <input type="text" id="lname" name="lastname" placeholder="Username">
