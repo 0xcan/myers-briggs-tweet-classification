@@ -4,6 +4,19 @@ from nltk.stem import WordNetLemmatizer
 import contractions
 import re
 from nltk.tokenize import word_tokenize
+import snscrape.modules.twitter as sntwitter
+
+
+def get_tweets(username):
+    tweets = []
+    for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{username}').get_items()):
+        if i == 50:
+            break
+        tweets.append([tweet.user.username, tweet.content])
+    tweets_df = pd.DataFrame(tweets, columns=["Username", "Tweet"])
+    return tweets_df
+
+
 
 def load_files():
     try:
