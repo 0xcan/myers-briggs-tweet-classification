@@ -4,6 +4,16 @@ from nltk.stem import WordNetLemmatizer
 import contractions
 import re
 from nltk.tokenize import word_tokenize
+import pandas as pd
+import snscrape.modules.twitter as sntwitter
+
+def get_tweets(username):
+    tweets = ""
+    for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{username}').get_items()):
+        if i == 50:
+            break
+        tweets += " " + tweet.content
+    return tweets
 
 def load_files():
     try:
