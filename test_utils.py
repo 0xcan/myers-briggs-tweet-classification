@@ -8,11 +8,11 @@ import pandas as pd
 import snscrape.modules.twitter as sntwitter
 
 def get_tweets(username):
-    tweets = ""
+    tweets = []
     for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{username}').get_items()):
         if i == 50:
             break
-        tweets += " " + tweet.content
+        tweets.append(tweet.content)
     return tweets
 
 def load_files():
@@ -55,7 +55,8 @@ def preprocessing(test):
 
 def get_prediction(username):
     ei_classifier, ns_classifier, ft_classifier, jp_classifier, vectorizer = load_files()
-    test = get_tweets(username)
+    tweets = get_tweets(username)
+    test = " ".join(tweets)
     test = preprocessing(test)
     test = vectorizer.transform([test])
     
@@ -66,4 +67,4 @@ def get_prediction(username):
     j_or_p = "J" if jp_classifier.predict(test)[0] == 1 else "P"
     prediction = e_or_i + n_or_s + f_or_t + j_or_p
 
-    return prediction
+    return prediction, tweets
