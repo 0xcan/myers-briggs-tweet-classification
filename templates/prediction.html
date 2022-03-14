@@ -23,6 +23,10 @@ img {
   margin-right: auto;
   width: 75%;
 }
+li{
+  color: lightblue;
+  font-family: helvetica;
+}
 
 </style>
 </head>
@@ -30,5 +34,10 @@ img {
 <h1>Myers-Briggs Personality Type Prediction</h1>
 <img src="{{url_for('static', filename='prediction.png')}}">
 <p>@{{username}} is {{predicted_type}} </p> 
+
+<p> -Tweets- </p>
+{% for tweet in tweets %}
+<li><span class="my-handle">></span><input type="hidden" name="handles[]" value="{{ tweet }}"/>{{ tweet }}</li>
+{% endfor %}
 </body>
 </html>
