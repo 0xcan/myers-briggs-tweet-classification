@@ -11,7 +11,7 @@ def home():
 def prediction():
 	if request.method == "POST" and "username" in request.form:
 		username = request.form['username']
-		model_prediction = get_prediction(username)
-		return render_template('prediction.html', username=username, predicted_type=model_prediction)
+		model_prediction, tweets = get_prediction(username)
+		return render_template('prediction.html', username=username, predicted_type=model_prediction, tweets=tweets)
 
 app.run(debug=True)
