@@ -9,10 +9,9 @@ import snscrape.modules.twitter as sntwitter
 
 def get_tweets(username):
     tweets = []
-    for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{username}').get_items()):
-        if i == 50:
-            break
+    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{username}').get_items()):
         tweets.append(tweet.content)
+        if i == 50: break
     return tweets
 
 def load_files():
@@ -36,35 +35,35 @@ def load_files():
 
     return ei_classifier, ns_classifier, ft_classifier, jp_classifier, vectorizer
     
-def preprocessing(test):
+def preprocessing(text):
     stopword_list = stopwords.words("english")
     lemmatizer = WordNetLemmatizer()
     
-    test = contractions.fix(test)
-    test = test.lower()
-    test = re.sub(r'@([a-zA-Z0-9_]{1,50})', '', test)
-    test = re.sub(r'http[s]?://\S+', '', test)
-    test = re.sub(r'[^A-Za-z0-9]+', ' ', test)
-    test = re.sub(r' +', ' ', test)
-    test = " ".join([word for word in test.split() if not len(word) <3])
-    test = word_tokenize(test)
-    test = [word for word in test if not word in stopword_list]
-    test = [lemmatizer.lemmatize(word) for word in test]
-    test = " ".join(test)
-    return test
+    text = contractions.fix(text)
+    text = text.lower()
+    text = re.sub(r'@([a-zA-Z0-9_]{1,50})', '', text)
+    text = re.sub(r'http[s]?://\S+', '', text)
+    text = re.sub(r'[^A-Za-z0-9]+', ' ', text)
+    text = re.sub(r' +', ' ', text)
+    text = " ".join([word for word in text.split() if not len(word) <3])
+    text = word_tokenize(text)
+    text = [word for word in text if not word in stopword_list]
+    text = [lemmatizer.lemmatize(word) for word in text]
+    text = " ".join(text)
+    return text
 
 def get_prediction(username):
     ei_classifier, ns_classifier, ft_classifier, jp_classifier, vectorizer = load_files()
     tweets = get_tweets(username)
-    test = " ".join(tweets)
-    test = preprocessing(test)
-    test = vectorizer.transform([test])
+    text   = " ".join(tweets)
+    text   = preprocessing(text)
+    text   = vectorizer.transform([text])
     
     prediction = ""
-    e_or_i = "E" if ei_classifier.predict(test)[0] == 1 else "I"
-    n_or_s = "N" if ns_classifier.predict(test)[0] == 1 else "S"
-    f_or_t = "F" if ft_classifier.predict(test)[0] == 1 else "T"
-    j_or_p = "J" if jp_classifier.predict(test)[0] == 1 else "P"
+    e_or_i = "E" if ei_classifier.predict(text)[0] == 1 else "I"
+    n_or_s = "N" if ns_classifier.predict(text)[0] == 1 else "S"
+    f_or_t = "F" if ft_classifier.predict(text)[0] == 1 else "T"
+    j_or_p = "J" if jp_classifier.predict(text)[0] == 1 else "P"
     prediction = e_or_i + n_or_s + f_or_t + j_or_p
 
     return prediction, tweets
