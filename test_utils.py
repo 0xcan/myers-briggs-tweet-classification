@@ -42,6 +42,7 @@ def preprocessing(text):
     text = contractions.fix(text)
     text = text.lower()
     text = re.sub(r'@([a-zA-Z0-9_]{1,50})', '', text)
+    text = re.sub(r'#([a-zA-Z0-9_]{1,50})', '', text)
     text = re.sub(r'http[s]?://\S+', '', text)
     text = re.sub(r'[^A-Za-z0-9]+', ' ', text)
     text = re.sub(r' +', ' ', text)
