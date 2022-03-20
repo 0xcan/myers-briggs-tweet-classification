@@ -33,3 +33,7 @@ The 16 personality types of the Myers-Briggs arise from four dimensions that con
 
 ## Exploratory Data Analysis
 
+#### Personality Type Distribution
+
+<img src="static/personality_type_distribution.png">
+
