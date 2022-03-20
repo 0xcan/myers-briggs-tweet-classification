@@ -17,7 +17,7 @@ This project contains following topics:
     - Scrape tweets of Twitter users
     - Prediction of Twitter users personalities
 
-## What is Myers-Briggs Personality Type?
+## What is Myers-Briggs Personality Type Indicator?
 
 Myers-Briggs is a personality test that categorizes individuals into one of 16 personality types.
 The 16 personality types of the Myers-Briggs arise from four dimensions that consist of two categories each.
