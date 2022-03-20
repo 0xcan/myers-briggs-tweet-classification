@@ -2,7 +2,7 @@
 
 ## Motivation of Project
 
-This project shows processes of developing simple Machine Learning models on textual data. With this project users can see the predicted personality types of Twitter users' according to Myers-Briggs Personality Types. 
+This project shows processes of developing simple Machine Learning models on textual data. With this project users can see the predicted personality types of Twitter users' according to Myers-Briggs Personality Types Indicator. 
 
 This project contains following topics:
 
