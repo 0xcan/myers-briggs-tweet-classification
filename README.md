@@ -37,3 +37,11 @@ The 16 personality types of the Myers-Briggs arise from four dimensions that con
 
 <img src="static/personality_type_distribution.png">
 
+#### Class Distribution
+
+<img src="static/class_distribution.png">
+
+#### WordCloud of Most Frequent Words
+
+<img src="static/most_frequent_wordcloud.png">
+
