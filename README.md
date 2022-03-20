@@ -31,3 +31,5 @@ The 16 personality types of the Myers-Briggs arise from four dimensions that con
     <img src="static/16_personalities.jpeg" width="600" height="600">
 </p>
 
+## Exploratory Data Analysis
+
