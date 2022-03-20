@@ -26,3 +26,8 @@ The 16 personality types of the Myers-Briggs arise from four dimensions that con
     - Intuition (N) v Sensing (S)
     - Feeling (F) v Thinking (T)
     - Judging (J) v Perceiving (P)
+
+<p align="center">
+    <img src="static/16_personalities.jpeg" width="600" height="600">
+</p>
+
